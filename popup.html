@@ -1,12 +1,19 @@
 <!doctype html>
 <html>
     <head>
-        <link href="styles/main.css" rel="stylesheet">
-        <!-- build:js scripts/popup.js -->
+        <link href="styles/popup.css" rel="stylesheet">
         <script src="scripts/popup.js"></script>
-        <!-- endbuild -->
     </head>
     <body>
         <!-- CHROME EXTENSION POPUP -->
+        <div id="unlogin">
+            <p>请先登陆才能下载统计数据哦！</p>
+        </div>
+        <div id="logined">
+            <p>淘宝用户名：<span id="user"></span></p>
+            <p>
+                <button id="download">下载当天实时来访数据</button>
+            </p>
+        </div>
     </body>
 </html>

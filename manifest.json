@@ -27,9 +27,6 @@
       "matches": [
         "http://lz.taobao.com/*"
       ],
-      "css": [
-        "styles/main.css"
-      ],
       "js": [
         "scripts/contentscript.js"
       ],
@@ -41,6 +38,6 @@
     "tabs",
     "notifications",
     "http://lz.taobao.com/*",
-    "http://api.linezing.com/*",
+    "http://api.linezing.com/*"
   ]
 }

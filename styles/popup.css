@@ -1,0 +1,12 @@
+body {
+    width: 300px;
+    text-align: center;
+}
+
+#user {
+    font-weight: bold;
+}
+
+#download {
+    font-size: 16px;
+}
