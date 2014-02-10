@@ -18,15 +18,14 @@
       "19": "images/icon-19.png",
       "38": "images/icon-38.png"
     },
-    "default_title": "LiangziDown",
+    "default_title": "LiangZiDown",
     "default_popup": "popup.html"
   },
   "options_page": "options.html",
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*"
+        "http://lz.taobao.com/*"
       ],
       "css": [
         "styles/main.css"
@@ -40,7 +39,8 @@
   ],
   "permissions": [
     "tabs",
-    "http://*/*",
-    "https://*/*"
+    "notifications",
+    "http://lz.taobao.com/*",
+    "http://api.linezing.com/*",
   ]
 }
