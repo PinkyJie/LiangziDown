@@ -1,8 +1,7 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
 
 import os
 import json
-import datetime
 import urllib
 
 from flask import (Flask, request, make_response)
@@ -24,40 +23,39 @@ def get_data(token):
     res2_json = json.loads(res2)
     return res2_json[1]
 
-def gen_csv(user, data):
+def gen_csv(data):
     content = []
-    content.append('序号, 访问日期, 访问时间, 入店来源, 来源网址, 被访页面, 页面网址, 访客IP, 访客位置, 顾客跟踪, 是否回头客, 顾客UV')
-    content.append()('\n')
+    content.append(u'序号, 访问日期, 访问时间, 入店来源, 来源网址, 被访页面, 页面网址, 访客IP, 访客位置, 顾客跟踪, 是否回头客, 顾客UV')
+    content.append('\n')
     for i, res in enumerate(data):
-        content.append(str(i+1)+', ')
-        content.append(res['day'].encode('utf8')+', ')
-        content.append(res['log_time'].encode('utf8')+', ')
-        content.append(res['ref_type'].encode('utf8')+', ')
-        content.append(res['ref'].encode('utf8')+', ')
-        content.append(res['title'].encode('utf8')+', ')
-        content.append(res['url'].encode('utf8')+', ')
-        content.append(res['ip'].encode('utf8')+', ')
-        content.append(res['location_name'].encode('utf8')+', ')
-        content.append('顾客'+str(res['uv_no'])+', ')
-        content.append(('回访' if res['uv_return'] == 1 else '新')+', ')
+        content.append('%d, ' % (i+1))
+        content.append('%s, ' % res['day'])
+        content.append('%s, ' % res['log_time'])
+        content.append('%s, ' % res['ref_type'])
+        content.append('%s, ' % res['ref'])
+        content.append('%s, ' % res['title'])
+        content.append('%s, ' % res['url'])
+        content.append('%s, ' % res['ip'])
+        content.append('%s, ' % res['location_name'])
+        content.append('%s%d, ' % (u'顾客', res['uv_no']))
+        content.append('%s, ' % (u'回访' if res['uv_return'] == 1 else u'新'))
         content.append(res['uv'])
         content.append('\n')
-    return content
+    return ''.join(content)
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['GET'])
 def root():
-    if 'user' not in request.form or 'token' not in request.form:
-        return 403
-    user = request.form['user']
-    token = request.form['token']
+    if 'file' not in request.args or 'token' not in request.args:
+        return u'非法访问'
+    file_name = request.args.get('file')
+    token = request.args.get('token')
     data = get_data(token)
-    cur_time = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
-    file_name = "%s-%s" % (user, cur_time)
-    response = make_response(data)
+    content = gen_csv(data)
+    response = make_response(content)
     response.headers['Content-type'] = 'text/csv'
     response.headers['Content-Disposition'] = "attachment;filename=" + file_name
     return response
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port)
+    app.run(host='0.0.0.0', port=port, debug=True)
