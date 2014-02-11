@@ -1,12 +1,16 @@
 function getTimeStr() {
     var date = new Date();
     return [
-        date.getFullYear(),
-        date.getMonth() + 1,
-        date.getDay(),
-        date.getHours(),
-        date.getMinutes(),
-        date.getSeconds()
+        [
+            date.getFullYear(),
+            date.getMonth() + 1,
+            date.getDate()
+        ].join(''),
+        [
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds()
+        ].join('')
     ].join('-');
 }
 
