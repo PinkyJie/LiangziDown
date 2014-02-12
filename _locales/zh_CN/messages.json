@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "量子党",
+    "description": "插件名称"
+  },
+  "appDescription": {
+    "message": "一键批量下载量子恒道的统计数据",
+    "description": "插件描述"
+  }
+}
