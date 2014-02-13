@@ -6,7 +6,8 @@ import urllib
 
 from flask import (Flask, request, make_response)
 
-application = app = Flask(__name__)
+app = Flask(__name__)
+app.debug = True
 
 def get_data(token):
     base_url = 'http://api.linezing.com/'
@@ -55,7 +56,3 @@ def root():
     response.headers['Content-type'] = 'text/csv'
     response.headers['Content-Disposition'] = "attachment;filename=" + file_name
     return response
-
-if __name__ == "__main__":
-    port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
