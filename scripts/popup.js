@@ -20,7 +20,7 @@ function genUrlFromCookie(cookie, count) {
 
 function downloadStat(user, session) {
     var fileName = encodeURIComponent(user) + '-' + getTimeStr() + '.csv';
-    var url = "https://lzd.ap01.aws.af.cm?file=" + fileName + '&token=' + session;
+    var url = "https://liangzidang.sinaapp.com?file=" + fileName + '&token=' + session;
     window.open(url);
 }
 
