@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 
-import os
 import json
 import urllib
 
@@ -54,5 +53,8 @@ def root():
     content = gen_csv(data)
     response = make_response(content)
     response.headers['Content-type'] = 'text/csv'
-    response.headers['Content-Disposition'] = "attachment;filename=" + file_name
+    response.headers['Content-Disposition'] = "attachment;filename=" + urllib.quote(file_name.encode('utf-8'))
     return response
+
+if __name__ == '__main__':
+    app.run()
