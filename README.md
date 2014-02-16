@@ -1,4 +1,4 @@
-LiangziDown
+LiangziDown（量子党）
 ===========
 
 Chrome插件，用于批量下载淘宝量子恒道的实时来访数据。
@@ -11,7 +11,9 @@ Chrome插件，用于批量下载淘宝量子恒道的实时来访数据。
 
 ###安装
 
-由于目前本插件尚未在Chrome Web Store发布，需要手动安装插件使用。
+插件已经在Chrome Web Store发布，点击[这里](https://chrome.google.com/webstore/detail/%E9%87%8F%E5%AD%90%E5%85%9A/dkdgdjlebbekbmboilieclmigakdbjld?hl=zh-CN)安装
+
+当然，也可以手动安装：
 
 1. 确保你使用Chrome浏览器
 2. [下载本项目](https://github.com/PinkyJie/LiangziDown/archive/master.zip)并解压
@@ -39,3 +41,7 @@ Chrome插件，用于批量下载淘宝量子恒道的实时来访数据。
 * 使用Excel打开文件即可看到实时访客数据，字段涵盖网页上所有字段（未来将可配置） 
 
 ![](https://raw2.github.com/PinkyJie/LiangziDown/master/screenshots/5.PNG)
+
+###后台
+
+插件的后台代码在`server`目录下，目前托管在SAE上
