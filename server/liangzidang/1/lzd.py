@@ -26,22 +26,22 @@ def get_data(token):
 def gen_csv(data):
     content = []
     content.append(u'序号, 访问日期, 访问时间, 入店来源, 来源网址, 被访页面, 页面网址, 访客IP, 访客位置, 顾客跟踪, 是否回头客, 顾客UV')
-    content.append('\n')
+    content.append(u'\n')
     for i, res in enumerate(data):
-        content.append('%d, ' % (i+1))
-        content.append('%s, ' % res['day'])
-        content.append('%s, ' % res['log_time'])
-        content.append('%s, ' % res['ref_type'])
-        content.append('%s, ' % res['ref'])
-        content.append('%s, ' % res['title'])
-        content.append('%s, ' % res['url'])
-        content.append('%s, ' % res['ip'])
-        content.append('%s, ' % res['location_name'])
-        content.append('%s%d, ' % (u'顾客', res['uv_no']))
-        content.append('%s, ' % (u'回访' if res['uv_return'] == 1 else u'新'))
+        content.append(u'%d, ' % (i+1))
+        content.append(u'%s, ' % res['day'])
+        content.append(u'%s, ' % res['log_time'])
+        content.append(u'%s, ' % res['ref_type'])
+        content.append(u'%s, ' % res['ref'])
+        content.append(u'%s, ' % res['title'])
+        content.append(u'%s, ' % res['url'])
+        content.append(u'%s, ' % res['ip'])
+        content.append(u'%s, ' % res['location_name'])
+        content.append(u'%s%d, ' % (u'顾客', res['uv_no']))
+        content.append(u'%s, ' % (u'回访' if res['uv_return'] == 1 else u'新'))
         content.append(res['uv'])
         content.append('\n')
-    return ''.join(content)
+    return u''.join(content)
 
 @app.route('/', methods=['GET'])
 def root():
@@ -51,7 +51,7 @@ def root():
     token = request.args.get('token')
     data = get_data(token)
     content = gen_csv(data)
-    response = make_response(content)
+    response = make_response(content.encode('gbk'))
     response.headers['Content-type'] = 'text/csv'
     response.headers['Content-Disposition'] = "attachment;filename=" + urllib.quote(file_name.encode('utf-8'))
     return response

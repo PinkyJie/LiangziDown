@@ -1,3 +1,4 @@
+.svn/
 venv/
 *.pyc
 Thumbs.db
