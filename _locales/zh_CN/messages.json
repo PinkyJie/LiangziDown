@@ -1,10 +1,18 @@
 {
-  "appName": {
-    "message": "量子党",
-    "description": "插件名称"
-  },
-  "appDescription": {
-    "message": "一键批量下载量子恒道的统计数据",
-    "description": "插件描述"
-  }
+	"appName": {
+		"message": "量子党",
+		"description": "插件名称"
+	},
+	"appDescription": {
+		"message": "一键批量下载量子恒道的统计数据",
+		"description": "插件描述"
+	},
+	"appNotifyTitle": {
+		"message": "亲，记得下载今天的数据哦！",
+		"description": "通知提醒标题"
+	},
+	"appNotifyBody": {
+		"message": "再过10分钟，量子恒道将清空今天的统计数据，还没下载的亲抓紧时间喽！",
+		"description": "通知提醒内容"
+	}
 }

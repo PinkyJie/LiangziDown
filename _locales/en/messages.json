@@ -6,5 +6,13 @@
   "appDescription": {
     "message": "Download Liangzihendao real time statistics data with just one click.",
     "description": "The description of the application"
+  },
+  "appNotifyTitle": {
+    "message": "Remember to download today's statistics data!",
+    "description": "Notification title"
+  },
+  "appNotifyBody": {
+    "message": "Liangzihendao will clear today's data in 10 minutes, please download it immediately!",
+    "description": "Notification body"
   }
 }

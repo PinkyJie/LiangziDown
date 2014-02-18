@@ -33,13 +33,14 @@ chrome.runtime.onMessage.addListener(function(request){
 
 // alarm at 23:50 every day
 function createEverydayAlarm() {
+    var notifyHour = 23, notifyMin = 30;
     var now = new Date();
     var diff;
     // if time pass 23:50, alarm next day
-    if (now.getHours() == 23 && now.getMinutes() > 50) {
+    if (now.getHours() == notifyHour && now.getMinutes() > notifyMin) {
         diff = 24 * 60 - now.getMinutes() - 50;
     } else {
-        diff = 23 * 60 + 50 - now.getHours() * 60 - now.getMinutes();
+        diff = notifyHour * 60 + notifyMin - now.getHours() * 60 - now.getMinutes();
     }
     // create alarm
     console.log('alarm after ' + diff + ' mins');
@@ -60,5 +61,19 @@ createEverydayAlarm();
 
 // notification for download
 function fireNotification() {
-
+    var opt = {
+        type: 'basic',
+        title: chrome.i18n.getMessage('appNotifyTitle'),
+        message: chrome.i18n.getMessage('appNotifyBody'),
+        iconUrl: 'images/icon-128.png'
+    };
+    chrome.notifications.create('2350notification', opt, function(notification){});
 }
+
+chrome.notifications.onClicked.addListener(function(notification){
+    if (notification === '2350notification') {
+        window.open('http://lz.taobao.com');
+    }
+});
+
+
