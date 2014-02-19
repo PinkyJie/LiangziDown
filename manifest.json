@@ -41,5 +41,7 @@
     "notifications",
     "http://lz.taobao.com/*",
     "http://api.linezing.com/*"
-  ]
+  ],
+  "author": "PinkyJie",
+  "short_name": "__MSG_appName__"
 }
