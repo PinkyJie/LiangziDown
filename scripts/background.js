@@ -31,16 +31,18 @@ chrome.runtime.onMessage.addListener(function(request){
     cookieData = request.cookie;
 });
 
-// alarm at 23:50 every day
+// alarm at specific time every day
 function createEverydayAlarm() {
-    var notifyHour = 23, notifyMin = 30;
+    var notifyHour = 23, notifyMin = 50;
     var now = new Date();
     var diff;
-    // if time pass 23:50, alarm next day
-    if (now.getHours() == notifyHour && now.getMinutes() > notifyMin) {
-        diff = 24 * 60 - now.getMinutes() - 50;
+    var nowMinutes = now.getHours() * 60 + now.getMinutes();
+    var alarmMinutes = notifyHour * 60 + notifyMin;
+    // if time pass specific time, alarm next day
+    if (nowMinutes > alarmMinutes) {
+        diff = 24 * 60 - (nowMinutes - alarmMinutes);
     } else {
-        diff = notifyHour * 60 + notifyMin - now.getHours() * 60 - now.getMinutes();
+        diff = alarmMinutes - nowMinutes;
     }
     // create alarm
     console.log('alarm after ' + diff + ' mins');
