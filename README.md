@@ -38,13 +38,17 @@ Chrome插件，用于批量下载淘宝量子恒道的实时来访数据。
 
 ![](https://raw2.github.com/PinkyJie/LiangziDown/master/screenshots/4.PNG)
 
-* 使用Excel打开文件即可看到实时访客数据，字段涵盖网页上所有字段（未来将可配置）
+* 使用Excel打开文件即可看到实时访客数据，字段涵盖网页上所有字段
 
 ![](https://raw2.github.com/PinkyJie/LiangziDown/master/screenshots/5.PNG)
 
 * (new!)由于每天的12点量子恒道将清空当天的统计数据，故每天23:50将弹出通知，提醒下载
 
 ![](https://raw2.github.com/PinkyJie/LiangziDown/master/screenshots/6.PNG)
+
+* (new!)增加选项设置页面，可设置下载哪些字段以及是否开启下载提醒
+
+![](https://raw2.github.com/PinkyJie/LiangziDown/master/screenshots/7.PNG)
 
 ###后台
 
