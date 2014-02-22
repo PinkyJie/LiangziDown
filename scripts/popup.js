@@ -21,6 +21,15 @@ function genUrlFromCookie(cookie, count) {
 function downloadStat(user, session) {
     var fileName = encodeURIComponent(user) + '-' + getTimeStr() + '.csv';
     var url = "https://liangzidang.sinaapp.com?file=" + fileName + '&token=' + session;
+    var options = chrome.extension.getBackgroundPage().options;
+    var fields = options.get().download_fields;
+    var arr = [];
+    for (var key in fields) {
+        if (fields[key] === true) {
+            arr.push(key);
+        }
+    }
+    url += '&fields=' + arr.join(',');
     window.open(url);
 }
 
