@@ -8,11 +8,10 @@ body {
     padding-left: 6px;
     opacity: 0.9;
     z-index: 999;
-    left: 50%;
-    top: 50%;
+    left: 45%;
+    top: 0;
     position: fixed;
     border-radius: 10px;
-    display: inline-block;
     background: #cc9966;
 }
 
@@ -54,6 +53,7 @@ body {
 }
 
 #options > h4 {
+    margin-bottom: 5px;
     padding-bottom: 7px;
     border-bottom: 2px dotted #336699;
 }
@@ -76,4 +76,13 @@ body {
     display: inline;
     line-height: 25px;
     font-weight: bold;
+}
+
+#buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+
+#save {
+    font-size: 12pt;
 }

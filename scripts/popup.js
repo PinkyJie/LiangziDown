@@ -26,11 +26,11 @@ function downloadStat(user, session) {
 
 document.addEventListener('DOMContentLoaded', function () {
     var cookie = chrome.extension.getBackgroundPage().cookieData;
-    var unloginDiv = document.querySelector('#unlogin'),
-        loginedDiv = document.querySelector('#logined'),
-        userSpan = document.querySelector('#user'),
-        tipSpan = document.querySelector('#tip'),
-        downloadBtn = document.querySelector('#download');
+    var unloginDiv = document.getElementById('unlogin'),
+        loginedDiv = document.getElementById('logined'),
+        userSpan = document.getElementById('user'),
+        tipSpan = document.getElementById('tip'),
+        downloadBtn = document.getElementById('download');
     if (cookie.lzsession && cookie.lznick) {
         unloginDiv.style.display = 'none';
         loginedDiv.style.display = 'block';

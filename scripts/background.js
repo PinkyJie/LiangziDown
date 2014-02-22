@@ -15,6 +15,33 @@ function getHostFromUrl(url) {
     return host;
 }
 
+function genDefaultOptions() {
+    if (typeof window.localStorage['options'] === 'undefined') {
+        var options = {};
+        options['download_fields'] = {
+            'day': true,
+            'log_time': true,
+            'ref_type': true,
+            'ref': true,
+            'title': true,
+            'url': true,
+            'ip': true,
+            'location_name': true,
+            'uv_no': true,
+            'uv_return': true,
+            'uv': true
+        };
+        options['notifications'] = {
+            'is_notify': true,
+            'notify_hour': 23,
+            'notify_minute': 50
+        };
+        window.localStorage['options'] = JSON.stringify(options);
+    }
+}
+
+genDefaultOptions();
+
 // show icon only on lz.taobao.com
 chrome.tabs.onUpdated.addListener(function (tabId, changeInfo, tab) {
     if (getHostFromUrl(tab.url) === 'lz.taobao.com') {
@@ -32,8 +59,7 @@ chrome.runtime.onMessage.addListener(function(request){
 });
 
 // alarm at specific time every day
-function createEverydayAlarm() {
-    var notifyHour = 23, notifyMin = 50;
+function createAlarmAt(notifyHour, notifyMin) {
     var now = new Date();
     var diff;
     var nowMinutes = now.getHours() * 60 + now.getMinutes();
@@ -55,6 +81,7 @@ chrome.alarms.onAlarm.addListener(function(alarm){
     if (alarm.name !== 'download-alarm') {
         return;
     }
+    // open notification
     fireNotification();
     // next day
     console.log('alarm after 24 hours');
@@ -63,9 +90,6 @@ chrome.alarms.onAlarm.addListener(function(alarm){
         delayInMinutes: 24 * 60
     });
 });
-
-chrome.alarms.clear('download-alarm');
-createEverydayAlarm();
 
 // notification for download
 function fireNotification() {
@@ -83,5 +107,20 @@ chrome.notifications.onClicked.addListener(function(notification){
         window.open('http://lz.taobao.com');
     }
 });
+
+// create alarm
+var options = {
+    'get': function() {
+        return JSON.parse(window.localStorage['options']);
+    },
+    'set': function(options) {
+        window.localStorage['options'] = JSON.stringify(options);
+    }
+};
+var notifications = options.get().notifications;
+if (notifications.is_notify) {
+    chrome.alarms.clear('download-alarm');
+    createAlarmAt(notifications.notify_hour, notifications.notify_minute);
+}
 
 
