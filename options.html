@@ -1,10 +1,115 @@
 <!doctype html>
 <html>
     <head>
+        <meta charset="utf-8">
         <link href="styles/options.css" rel="stylesheet">
         <script src="scripts/options.js"></script>
     </head>
     <body>
         <!-- CHROME EXTENSION OPTION -->
+        <div id="alert">
+            <p>选项已保存！</p>
+        </div>
+        <div id="container">
+            <div id="header">
+                <img src="../images/icon-128.png" />
+                <h2>量子党</h2>
+                <h4>一键批量下载量子恒道的统计数据</h4>
+            </div>
+            <div id="options">
+                <h4>设置选项</h4>
+                <div id="fields" class="field">
+                    <h3>选择需要下载的字段：</h3>
+                    <div class="checkbox">
+                        <input type="checkbox" name="day" checked="checked">
+                        <label>访问日期</label>
+                        <p>访客的IP地址访问的日期</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="log_time" checked="checked">
+                        <label>访问时间</label>
+                        <p>访客的IP地址访问的时间</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="ref_type" checked="checked">
+                        <label>入店来源</label>
+                        <p>访客的IP地址从哪个页面点击过来的</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="ref" checked="checked">
+                        <label>来源网址</label>
+                        <p>访客的IP地址从哪个网址点击过来的</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="title" checked="checked">
+                        <label>被访页面</label>
+                        <p>店铺里被访问的页面</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="url" checked="checked">
+                        <label>页面网址</label>
+                        <p>店铺里被访问的页面网址</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="ip" checked="checked">
+                        <label>访客IP</label>
+                        <p>访客的IP地址</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="location_name" checked="checked">
+                        <label>访客位置</label>
+                        <p>访客的归属地</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="uv_no" checked="checked">
+                        <label>顾客跟踪</label>
+                        <p>访客的跟踪序号</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="uv_return" checked="checked">
+                        <label>是否回头客</label>
+                        <p>该访客是否是回头客</p>
+                    </div>
+                    <div class="checkbox">
+                        <input type="checkbox" name="uv" checked="checked">
+                        <label>顾客UV</label>
+                        <p>该访客的唯一标识符</p>
+                    </div>
+                </div>
+                <div id="notifications" class="field">
+                    <h3>通知提醒：</h3>
+                    <div class="checkbox">
+                        <input type="checkbox" name="is_notify" checked="checked">
+                        <label>开启提醒</label>
+                        <p>量子恒道将在每天的零点自动清除当天的来访数据，故建议开启提醒，插件将在指定的时间提醒您下载当天的来访数据。</p>
+                    </div>
+                    <div class="checkbox">
+                        <label>提醒时间</label>
+                        <select id="hour">
+                            <option value="21">21</option>
+                            <option value="22">22</option>
+                            <option value="23" selected="selected">23</option>
+                        </select>
+                        <label>时</lable>
+                        <select id="minute">
+                            <option value="5">5</option>
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option>
+                            <option value="30">30</option>
+                            <option value="35">35</option>
+                            <option value="40">40</option>
+                            <option value="45">45</option>
+                            <option value="50" selected="selected">50</option>
+                            <option value="55">55</option>
+                        </select>
+                        <label>分</lable>
+                        <p>推荐 23:50</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

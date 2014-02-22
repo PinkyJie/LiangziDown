@@ -46,19 +46,25 @@ function createEverydayAlarm() {
     }
     // create alarm
     console.log('alarm after ' + diff + ' mins');
-    chrome.alarms.create('2350alarm', {
+    chrome.alarms.create('download-alarm', {
         delayInMinutes: diff
     });
 }
 
 chrome.alarms.onAlarm.addListener(function(alarm){
-    if (alarm.name !== '2350alarm') {
+    if (alarm.name !== 'download-alarm') {
         return;
     }
     fireNotification();
+    // next day
+    console.log('alarm after 24 hours');
+    chrome.alarms.clear('download-alarm');
+    chrome.alarms.create('download-alarm', {
+        delayInMinutes: 24 * 60
+    });
 });
 
-chrome.alarms.clear('2350alarm');
+chrome.alarms.clear('download-alarm');
 createEverydayAlarm();
 
 // notification for download
@@ -69,11 +75,11 @@ function fireNotification() {
         message: chrome.i18n.getMessage('appNotifyBody'),
         iconUrl: 'images/icon-128.png'
     };
-    chrome.notifications.create('2350notification', opt, function(notification){});
+    chrome.notifications.create('download-notification', opt, function(notification){});
 }
 
 chrome.notifications.onClicked.addListener(function(notification){
-    if (notification === '2350notification') {
+    if (notification === 'download-notification') {
         window.open('http://lz.taobao.com');
     }
 });
